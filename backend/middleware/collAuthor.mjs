@@ -5,6 +5,6 @@ export async function collAuthor (collection, userid) {
 		'name',
 		'rank',
 	]);
-	return collection.name === user.name || user.rank === 'admin';
+	return collection.author === user.name || user.rank === 'admin';
 }
 
