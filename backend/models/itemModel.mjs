@@ -7,6 +7,10 @@ const ItemSchema = new mongoose.Schema(
 			required: true,
 			unique: true
 		},
+		collectionId: {
+			type: String,
+			required: true,
+		},
 		tags:{
 			type: Array,
 			required: true,
