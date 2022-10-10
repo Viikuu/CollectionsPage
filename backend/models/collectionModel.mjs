@@ -11,6 +11,10 @@ const CollectionSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		author:{
+			type: String,
+			required: true,
+		},
 		topic:{
 			type: String,
 			required: true,
@@ -19,7 +23,7 @@ const CollectionSchema = new mongoose.Schema(
 			type: Array,
 			required: true,
 		},
-		elements: {
+		items: {
 			type: Array, //array of items ids
 		}
 	},
