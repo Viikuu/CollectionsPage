@@ -12,12 +12,7 @@ const createItem = async (request, response, next) => {
 					return response.json({state: false, message: ''});
 				}
 			}
-<<<<<<< HEAD
 			const {name, tags, ...other} = item;
-=======
-			const {name, tags, other} = item;
->>>>>>> origin/main
-
 			await ItemModel.create(
 				{
 					collectionId,
