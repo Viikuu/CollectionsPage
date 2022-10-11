@@ -19,7 +19,7 @@ const CollectionSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		tags:{
+		tags:{ // specified item tags
 			type: Array,
 			required: true,
 		},

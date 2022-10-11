@@ -59,7 +59,7 @@ const deleteCollection = async (request, response, next) => {
 	try {
 		const {id} = request.params;
 		if (await collAuthor(await CollectionModel.find({_id: id}), request._id)) {
-			await CollectionModel.findByIdAndDelete({id});
+			await CollectionModel.findByIdAndDelete(id);
 			return response.json({state: true});
 		}
 		return response.json({state: true, message: 'Unauthorized'});
