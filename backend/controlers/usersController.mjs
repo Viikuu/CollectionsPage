@@ -7,7 +7,7 @@ const user = async (request, response, next) => {
 			'_id',
 			'status'
 		]);
-		return response.json({state: true, user})
+		return response.json({state: true,data: user})
 	} catch (error) {
 		next(error);
 	}
@@ -23,7 +23,7 @@ const allusers = async (request, response, next) => {
 			'updatedAt',
 			'status'
 		]);
-		return response.json({state: true, users})
+		return response.json({state: true, data: users})
 	} catch (error) {
 		next(error);
 	}
