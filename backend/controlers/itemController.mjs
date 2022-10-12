@@ -29,6 +29,35 @@ const createItem = async (request, response, next) => {
 	}
 }
 
+const upgradeItem = async (request, response, next) => {
+	try {
+		const {item} = request.body;
+		const collection = await CollectionModel.find({_id:item.collectionId});
+		if(await collAuthor(collection, request._id)) {
+			for(const tag in collection.tags) {
+				if(item[tag] === undefined) {
+					return response.json({state: false, message: ''});
+				}
+			}
+			const {name, tags, ...other} = item;
+			await ItemModel.findByIdAndUpdate({
+					_id : item._id
+				},
+				{
+					collectionId: item.collectionId,
+					name: item.name,
+					tags: item.tags,
+					other: other,
+				});
+			return response.json({state: true});
+		}
+		return response.json({state: true, message: 'Unauthorized'});
+
+	} catch (error) {
+		next(error);
+	}
+}
+
 const getItemByCatt = async (request, response, next) => {
 	try {
 		const collectionId = request.params.collectionId;
@@ -74,4 +103,5 @@ export {
 	getItemByCatt,
 	getItemById,
 	deleteItem,
+	upgradeItem,
 };
