@@ -10,6 +10,10 @@ const ItemSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		likes: {
+			type:Number,
+			required: true,
+		},
 		tags:{
 			type: Array,
 			required: true,

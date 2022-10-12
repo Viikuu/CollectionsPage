@@ -16,6 +16,7 @@ const createItem = async (request, response, next) => {
 			await ItemModel.create(
 				{
 					collectionId,
+					likes: 0,
 					name: item.name,
 					tags: item.tags,
 					other: other,
@@ -44,6 +45,7 @@ const upgradeItem = async (request, response, next) => {
 					_id : item._id
 				},
 				{
+					likes: item.likes,
 					collectionId: item.collectionId,
 					name: item.name,
 					tags: item.tags,
