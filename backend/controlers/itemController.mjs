@@ -32,9 +32,10 @@ const createItem = async (request, response, next) => {
 
 const upgradeItem = async (request, response, next) => {
 	try {
+		const itemId = request.params.itemId;
 		const {item} = request.body;
 		const collection = await CollectionModel.find({_id:item.collectionId});
-		if(await collAuthor(collection, request._id)) {
+		if(await collAuthor(collection, request._id) && itemId === item._id) {
 			for(const tag in collection.tags) {
 				if(item[tag] === undefined) {
 					return response.json({state: false, message: ''});
