@@ -63,11 +63,8 @@ const upgradeItem = async (request, response, next) => {
 const getItemByCatt = async (request, response, next) => {
 	try {
 		const collectionId = request.params.collectionId;
-		if(await collAuthor(await CollectionModel.find({_id:collectionId}), request._id)) {
-			const items = await ItemModel.find({collectionId: collectionId});
-			return response.json({state: true, data : items });
-		}
-		return response.json({state: true, message: 'Unauthorized'});
+		const items = await ItemModel.find({collectionId: collectionId});
+		return response.json({state: true, data : items });
 	} catch (error) {
 		next(error);
 	}
@@ -75,12 +72,9 @@ const getItemByCatt = async (request, response, next) => {
 
 const getItemById = async (request, response, next) => {
 	try {
-		const itemId = request.params.collectionId;
+		const itemId = request.params.itemId;
 		const item = await ItemModel.find({_id: itemId});
-		if(await collAuthor(await CollectionModel.find({_id: item.collectionId}), request._id)) {
-			return response.json({state: true, data : item });
-		}
-		return response.json({state: true, message: 'Unauthorized'});
+		return response.json({state: true, data : item });
 	} catch (error) {
 		next(error);
 	}
