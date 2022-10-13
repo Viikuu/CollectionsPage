@@ -25,8 +25,8 @@ const createCollection = async (request, response, next) => {
 
 const getCollections = async (request, response, next) => {
 	try {
-		const users = await CollectionModel.find();
-		return response.json({state: true, users});
+		const collections = await CollectionModel.find();
+		return response.json({state: true, data: collections});
 	} catch (error) {
 		next(error);
 	}
