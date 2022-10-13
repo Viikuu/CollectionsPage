@@ -5,13 +5,14 @@ import {
 	editCollection,
 	getCollections
 } from '../controlers/collectionController.mjs';
+import {authenticateToken} from '../middleware/authMiddleware.mjs';
 
 const collectionRoutes = Router();
 
 collectionRoutes.get('/', getCollections);
-collectionRoutes.delete('/:id', deleteCollection);
-collectionRoutes.put('/:id', editCollection);
-collectionRoutes.post('/', createCollection);
+collectionRoutes.delete('/:id', authenticateToken, deleteCollection);
+collectionRoutes.put('/:id', authenticateToken, editCollection);
+collectionRoutes.post('/', authenticateToken, createCollection);
 
 export {
 	collectionRoutes,
