@@ -15,6 +15,16 @@ const createComment = async (request, response, next) => {
 	}
 }
 
+const getCommentById = async (request, response, next) => {
+	try {
+		const {commentId} = request.params;
+		const comment = await CommentModel.find({_id:commentId});
+		return response.json({state: true,data: comment});
+	} catch (error) {
+		next(error);
+	}
+}
+
 const getCommentsByItemId = async (request, response, next) => {
 	try {
 		const {itemId} = request.params;
@@ -63,4 +73,5 @@ export {
 	createComment,
 	deleteComment,
 	updateComment,
-}
+	getCommentById,
+};
