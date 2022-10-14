@@ -1,5 +1,6 @@
 import {CollectionModel} from '../models/collectionModel.mjs';
 import {collAuthor} from '../middleware/collAuthor.mjs';
+import {createNewCattUnlessExist} from './categoryController.mjs';
 
 const createCollection = async (request, response, next) => {
 	try {
@@ -8,6 +9,7 @@ const createCollection = async (request, response, next) => {
 		if (nameCheck) {
 			return response.json({message: 'Name already used', state: false});
 		}
+		await createNewCattUnlessExist(topic);
 		await CollectionModel.create(
 			{
 				name,
@@ -37,6 +39,7 @@ const editCollection = async (request, response, next) => {
 		const {id, element} = request.body;
 		if (id === request.params.id) {
 			if(await collAuthor(await CollectionModel.find({_id: id}), request._id)) {
+				await createNewCattUnlessExist(element.topic);
 				await CollectionModel.findByIdAndUpdate(id, {
 					name: element.name,
 					description: element.description,
