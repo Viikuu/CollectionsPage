@@ -13,7 +13,7 @@ const commentRoutes = Router();
 commentRoutes.get('/:commentId', getCommentById);
 commentRoutes.get('/item/:itemId', getCommentsByItemId);
 
-commentRoutes.delete('/:ccommentId', authenticateToken, deleteComment);
+commentRoutes.delete('/:commentId', authenticateToken, deleteComment);
 commentRoutes.post('/', authenticateToken, createComment);
 commentRoutes.put('/:commentId', authenticateToken, updateComment);
 
