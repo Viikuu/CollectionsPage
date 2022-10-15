@@ -6,6 +6,9 @@ import {connection} from './utils/db.mjs';
 import {userRoutes} from './routers/userRoutes.mjs';
 import {authRoutes} from './routers/authRouter.mjs';
 import {authenticateToken} from './middleware/authMiddleware.mjs';
+import {collectionRoutes} from './routers/collectionRouter.mjs';
+import {itemRoutes} from './routers/itemRouter.mjs';
+import {commentRoutes} from './routers/commentRouter.mjs';
 
 const app = express();
 
@@ -23,7 +26,11 @@ app.use(cors(
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use("/api/user", authenticateToken, userRoutes);
+app.use("/api/collections", collectionRoutes);
+app.use("/api/items", itemRoutes);
+app.use("/api/comments", commentRoutes);
+
+app.use("/api/users", authenticateToken, userRoutes);
 
 await connection();
 
