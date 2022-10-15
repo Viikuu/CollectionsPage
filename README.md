@@ -14,7 +14,16 @@ Made using Node.js, Express.js and React.js.
 
 ## Functionalities
 
-Right now we have full user auth backend site, rest api for user, collection and for item (*in progress*)
+Right now we have:
+    
+  On Backend site -
+  
+  *full user auth api, rest api for user, collections, items and comments api which specified endpoits,
+  which let user to create, delete, update and get informations using specified thing id.*
+
+  On Frontend site -
+
+  *Work in Progress*
 
 ## Setup
 
