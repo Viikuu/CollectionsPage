@@ -7,7 +7,7 @@ const itemRoutes = Router();
 itemRoutes.get('/:id', getItemById);
 itemRoutes.get('/coll/:collectionId', getItemByCatt);
 
-itemRoutes.delete('/:collectionId', authenticateToken, deleteItem);
+itemRoutes.delete('/:itemId', authenticateToken, deleteItem);
 itemRoutes.post('/', authenticateToken, createItem);
 itemRoutes.put('/:itemId', authenticateToken, upgradeItem);
 

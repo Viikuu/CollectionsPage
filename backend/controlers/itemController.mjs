@@ -83,7 +83,7 @@ const getItemById = async (request, response, next) => {
 
 const deleteItem = async (request, response, next) => {
 	try {
-		const itemId = request.params.collectionId;
+		const itemId = request.params.itemId;
 		const item = await ItemModel.find({_id: itemId});
 		if(await collAuthor(await CollectionModel.find({_id: item.collectionId}), request._id)) {
 			await ItemModel.findByIdAndDelete(itemId);
