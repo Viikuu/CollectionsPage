@@ -1,4 +1,4 @@
-import {collAuthor} from '../middleware/collAuthor.mjs';
+import {collAuthor} from '../middleware/permissionController.mjs';
 import {ItemModel} from '../models/itemModel.mjs';
 import {CollectionModel} from '../models/collectionModel.mjs';
 

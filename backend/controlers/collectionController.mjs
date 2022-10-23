@@ -1,5 +1,5 @@
 import {CollectionModel} from '../models/collectionModel.mjs';
-import {collAuthor} from '../middleware/collAuthor.mjs';
+import {collAuthor} from '../middleware/permissionController.mjs';
 import {createNewCattUnlessExist} from './categoryController.mjs';
 
 const createCollection = async (request, response, next) => {
