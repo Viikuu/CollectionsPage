@@ -5,7 +5,8 @@ const user = async (request, response, next) => {
 		const user = await UserModel.findOne({_id: request.id}).select([
 			'name',
 			'_id',
-			'status'
+			'status',
+			'rank',
 		]);
 		return response.json({state: true,data: user})
 	} catch (error) {
@@ -21,7 +22,8 @@ const allusers = async (request, response, next) => {
 			'_id',
 			'createdAt',
 			'updatedAt',
-			'status'
+			'status',
+			'rank',
 		]);
 		return response.json({state: true, data: users})
 	} catch (error) {
