@@ -16,6 +16,7 @@ export default function AdminPanel() {
 	const [isUserLoading, setIsUserLoading] = useState(true);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isCheckAll, setIsCheckAll] = useState(false);
+	const [notAdmin, setNotAdmin] = useState(true);
 
 	useEffect(() => {
 		axios.get(singleUserRoute, {
@@ -27,8 +28,11 @@ export default function AdminPanel() {
 				navigate('/login');
 			} else if (!response.data.status) {
 				navigate('/login');
+			} else if (response.data.data.rank !== 'Admin') {
+				navigate('/');
 			} else {
 				setIsUserLoading(false);
+				setNotAdmin(false);
 			}
 		});
 	}, [navigate]);
@@ -64,7 +68,7 @@ export default function AdminPanel() {
 
 	return (
 		<>
-			{isUserLoading ?
+			{isUserLoading || notAdmin ?
 				(<></>) : (<div className={'h-screen w-screen flex flex-col justify-center gap-1 items-center bg-gray-800'}>
 						<div
 							className={'absolute text-3xl flex flex-row top-0 right-0 bg-sky-500 rounded-full content-center m-2 bg-purple-600 text-white py-4 px-8 border-none font-bold cursor-pointer uppercase hover:bg-violet-900'}>
