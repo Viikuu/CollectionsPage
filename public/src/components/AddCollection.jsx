@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import { Modal, Button, Group } from '@mantine/core';
+import {CreateNewCollection} from './CreateNew';
 
-export function AddComp(Component,{title, buttonInfo}) {
+export function AddCollection() {
 	const [opened, setOpened] = useState(false);
 	return (
 		<>
 			<Modal
 				opened={opened}
 				onClose={() => setOpened(false)}
-				title={title}
+				title={"title"}
 			>
-				<Component/>
+				<CreateNewCollection/>
 			</Modal>
 
 			<Group position="center">
-				<Button onClick={() => setOpened(true)}>{buttonInfo}</Button>
+				<Button onClick={() => setOpened(true)}>Create new Collection</Button>
 			</Group>
 		</>
 	);
