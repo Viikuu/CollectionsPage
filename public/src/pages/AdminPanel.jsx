@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-import {allUsersRoute, singleUserRoute} from '../utils/APIRoutes';
+import {allUsersRoute, currentlyLoggedUserRoute} from '../utils/APIRoutes';
 import {BlockButton} from '../components/BlockButton';
 import {UnblockButton} from '../components/UnblockButton';
 import {DeleteButton} from '../components/DeleteButton';
@@ -19,7 +19,7 @@ export default function AdminPanel() {
 	const [notAdmin, setNotAdmin] = useState(true);
 
 	useEffect(() => {
-		axios.get(singleUserRoute, {
+		axios.get(currentlyLoggedUserRoute, {
 			withCredentials: true
 		}).then(response => {
 			response = axiosWrapper(response, navigate);
